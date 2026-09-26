@@ -644,6 +644,26 @@ class ReplyRequest(BaseModel):
 
 
 # -----------------------------------------------------------------------------
+# 0. GET / (Root Welcome & Status)
+# -----------------------------------------------------------------------------
+@app.get("/")
+async def root():
+    return {
+        "service": "magicpin-vera-bot",
+        "status": "online",
+        "message": "magicpin AI Challenge — Vera Assistant API is running.",
+        "endpoints": {
+            "healthz": "/v1/healthz",
+            "metadata": "/v1/metadata",
+            "context": "/v1/context",
+            "tick": "/v1/tick",
+            "reply": "/v1/reply",
+            "docs": "/docs",
+        },
+    }
+
+
+# -----------------------------------------------------------------------------
 # 1. GET /v1/healthz
 # -----------------------------------------------------------------------------
 @app.get("/v1/healthz")
