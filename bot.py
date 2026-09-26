@@ -59,7 +59,8 @@ LLM_API_KEY = os.environ.get("LLM_API_KEY", "") or GEMINI_API_KEY
 if not GEMINI_API_KEY and LLM_API_KEY:
     GEMINI_API_KEY = LLM_API_KEY
 
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-3.8-flash")
+
 
 
 # Server Start Timestamp
@@ -519,9 +520,10 @@ async def call_gemini_composer(
     )
 
     models_to_try = [GEMINI_MODEL]
-    for candidate in ["gemini-2.0-flash", "gemini-1.5-flash"]:
+    for candidate in ["gemini-3.8-flash", "gemini-3.5-flash", "gemini-3-flash-preview", "gemini-2.0-flash", "gemini-1.5-flash"]:
         if candidate not in models_to_try:
             models_to_try.append(candidate)
+
 
 
     for model_name in models_to_try:
